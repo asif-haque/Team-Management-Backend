@@ -1,6 +1,8 @@
 const express = require("express");
 const Users = require("../models/users");
 const Teams = require("../models/teams");
+const app = require("../app");
+var cors = require("cors");
 
 const router = express.Router();
 

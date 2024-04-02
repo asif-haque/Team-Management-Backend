@@ -8,13 +8,13 @@ const teamRouter = require("./routes/team");
 
 const app = express();
 
-// DB connection
-dbConnection(process.env.MONGO_URL);
-
 // middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// DB connection
+dbConnection(process.env.MONGO_URL);
 
 // routes
 app.use("/api/users", userRouter);
@@ -28,3 +28,5 @@ app.all("*", function (req, res) {
 app.listen(process.env.PORT, () =>
   console.log("Server started at ", process.env.PORT)
 );
+
+module.exports = app;
