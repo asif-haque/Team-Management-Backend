@@ -30,9 +30,7 @@ router
         gender: { $regex: "\\b" + gender + "\\b", $options: "i" }, // matching exact value
       });
 
-      const totalPages = Math.ceil(total / perPage);
-
-      return res.status(200).json({ totalPages, data: users });
+      return res.status(200).json({ total, data: users });
     } catch (err) {
       return res
         .status(500)
