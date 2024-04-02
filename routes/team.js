@@ -21,11 +21,10 @@ router.route("/").post(async (req, res) => {
       .status(400)
       .json({ error: true, message: "Maximum members in the team = 11" });
   try {
-    const team = await Teams.create(req.body);
+    const team = await Teams.create(req.body).populate("members");
     return res
       .status(201)
-      .json({ message: team.name + " created!", data: team })
-      .populate("members");
+      .json({ message: team.name + " created!", data: team });
   } catch (err) {
     return res
       .status(500)
